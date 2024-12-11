@@ -2,7 +2,9 @@
 pipeline {
     agent {
         kubernetes {
-            cloud 'kubernetes'
+           cloud 'kubernetes'
+            label 'kubeagent'  // Jenkins UI의 Pod Template label과 일치
+            inheritFrom 'kube-agent'  // Jenkins UI의 Pod Template name과 일치
             yaml """
                 ${params.POD_TEMPLATE}
             """
