@@ -1,16 +1,13 @@
 // Jenkinsfile
-pipeline {
-    agent {
-        kubernetes {
-           cloud 'kubernetes'
-            label 'kubeagent'  // Jenkins UI의 Pod Template label과 일치
-            inheritFrom 'kube-agent'  // Jenkins UI의 Pod Template name과 일치
-            yaml """
-                ${params.POD_TEMPLATE}
-            """
-        }
-    }
-    stages {
+podTemplate(label: "user-${NAMESPACE}-agent", 
+            namespace: "${NAMESPACE}",
+            containers: [
+              containerTemplate(name: 'jnlp', image: 'jenkins/inbound-agent:latest')
+            ]) {
+  node("user-${NAMESPACE}-agent") {
+    // Your existing pipeline stages
+
+      stages {
         stage('Checkout') {
             steps {
                 git url: params.GIT_REPO
@@ -40,4 +37,5 @@ pipeline {
             }
         }
     }
+  }
 }
