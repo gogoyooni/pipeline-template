@@ -2,7 +2,11 @@
 pipeline {
     agent {
         kubernetes {
-            yaml params.POD_TEMPLATE  // jenkins.service.ts의 getPodTemplate에서 정의한 Pod 스펙
+            cloud 'kubernetes'
+            yaml """
+                ${params.POD_TEMPLATE}
+            """
+            defaultContainer 'kubectl'
         }
     }
     stages {
