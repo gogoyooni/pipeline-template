@@ -6,7 +6,6 @@ pipeline {
             yaml """
                 ${params.POD_TEMPLATE}
             """
-            defaultContainer 'kubectl'
         }
     }
     stages {
