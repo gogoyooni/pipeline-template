@@ -58,6 +58,11 @@ pipeline {
             steps {
                 container('kaniko') {
                     sh """
+                        # 현재 디렉토리 내용 확인
+                        ls -la
+                
+                        # package.json 파일 찾기
+                        find . -name "package.json"
                         /kaniko/executor \
                         --context=\$PWD \
                         --dockerfile=\$PWD/Dockerfile \
