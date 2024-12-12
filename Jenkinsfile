@@ -53,14 +53,6 @@ pipeline {
                 echo "Git Repo: ${params.GIT_REPO}"
             }
         }
-
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: "https://github.com/${params.GIT_REPO}.git"
-        
-            }
-        }
         
         stage('Build and Push Docker Image') {
             steps {
