@@ -39,7 +39,7 @@ pipeline {
     }
     
     environment {
-        DOCKER_IMAGE = "${params.DOCKER_USERNAME}/test-app"
+        DOCKER_IMAGE = "${params.DOCKER_USERNAME}/dynamic-jenkins-test"
         DOCKER_TAG = "${BUILD_NUMBER}"
         APP_NAME = "line-app"
     }
