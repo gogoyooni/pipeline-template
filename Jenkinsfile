@@ -62,6 +62,7 @@ pipeline {
                         --context=\$PWD \
                         --dockerfile=\$PWD/Dockerfile \
                         --destination=${DOCKER_IMAGE}:${DOCKER_TAG}
+                        --registry-mirror=docker.io
                     """
                 }
             }
