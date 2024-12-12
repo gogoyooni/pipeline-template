@@ -26,6 +26,8 @@ pipeline {
                     args:
                     - 99d
                     tty: true
+                    securityContext:
+                      runAsUser: 1000
                   volumes:
                   - name: docker-config
                     secret:
