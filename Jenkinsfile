@@ -58,6 +58,7 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: "https://github.com/${params.GIT_REPO}.git"
+                    credentialsId: 'github-gogoyooni'  // 여기서 설정한 credentials ID 사용
             }
         }
         
