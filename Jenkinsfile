@@ -9,7 +9,7 @@ pipeline {
                   labels:
                     kubeagent: "true"
                 spec:
-                  serviceAccountName: jenkins-admin
+                  serviceAccountName: ${params.NAMESPACE}-sa
                   containers:
                   - name: kaniko
                     image: gcr.io/kaniko-project/executor:debug
