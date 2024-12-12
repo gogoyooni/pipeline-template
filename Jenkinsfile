@@ -41,7 +41,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "${params.DOCKER_USERNAME}/test-app"
         DOCKER_TAG = "${BUILD_NUMBER}"
-        APP_NAME = "test-app"
+        APP_NAME = "line-app"
     }
     
     stages {
