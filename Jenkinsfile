@@ -80,11 +80,11 @@ pipeline {
                 container('kubectl') {
                     sh  """
                 # 디버깅을 위한 정보 출력
-                echo "Current context:"
-                kubectl config current-context
-                
                 echo "Current namespace:"
                 kubectl config get-contexts
+                
+                echo "cluster information"
+                echo kubectl cluster-info
                 
                 # 기존 deployment 삭제
                 kubectl delete deployment ${APP_NAME} -n ${params.NAMESPACE} --ignore-not-found=true
